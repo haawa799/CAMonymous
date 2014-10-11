@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		439E087B19E9D8120039006B /* ToolbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439E087A19E9D8120039006B /* ToolbarViewController.swift */; };
 		43CD6F4719E89227007F2295 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CD6F4619E89227007F2295 /* AppDelegate.swift */; };
 		43CD6F4919E89227007F2295 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CD6F4819E89227007F2295 /* ViewController.swift */; };
 		43CD6F4C19E89227007F2295 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43CD6F4A19E89227007F2295 /* Main.storyboard */; };
@@ -34,14 +35,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		43CD6F4119E89227007F2295 /* CAMonymous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CAMonymous.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		439E087A19E9D8120039006B /* ToolbarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarViewController.swift; sourceTree = "<group>"; };
+		43CD6F4119E89227007F2295 /* Noface.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Noface.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43CD6F4519E89227007F2295 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43CD6F4619E89227007F2295 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43CD6F4819E89227007F2295 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		43CD6F4B19E89227007F2295 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		43CD6F4D19E89227007F2295 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		43CD6F5019E89227007F2295 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		43CD6F5619E89227007F2295 /* CAMonymousTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CAMonymousTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		43CD6F5619E89227007F2295 /* NofaceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NofaceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		43CD6F5B19E89227007F2295 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43CD6F5C19E89227007F2295 /* CAMonymousTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAMonymousTests.swift; sourceTree = "<group>"; };
 		43CD6F6619E89284007F2295 /* CAMonymous-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CAMonymous-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -88,8 +90,8 @@
 		43CD6F4219E89227007F2295 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				43CD6F4119E89227007F2295 /* CAMonymous.app */,
-				43CD6F5619E89227007F2295 /* CAMonymousTests.xctest */,
+				43CD6F4119E89227007F2295 /* Noface.app */,
+				43CD6F5619E89227007F2295 /* NofaceTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -99,6 +101,7 @@
 			children = (
 				43CD6F4619E89227007F2295 /* AppDelegate.swift */,
 				43CD6F4819E89227007F2295 /* ViewController.swift */,
+				439E087A19E9D8120039006B /* ToolbarViewController.swift */,
 				43CD6F7719E8A392007F2295 /* CaptureManager.h */,
 				43CD6F7819E8A392007F2295 /* CaptureManager.m */,
 				43CD6F7319E899C1007F2295 /* Shaders.metal */,
@@ -147,9 +150,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		43CD6F4019E89227007F2295 /* CAMonymous */ = {
+		43CD6F4019E89227007F2295 /* Noface */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 43CD6F6019E89227007F2295 /* Build configuration list for PBXNativeTarget "CAMonymous" */;
+			buildConfigurationList = 43CD6F6019E89227007F2295 /* Build configuration list for PBXNativeTarget "Noface" */;
 			buildPhases = (
 				43CD6F3D19E89227007F2295 /* Sources */,
 				43CD6F3E19E89227007F2295 /* Frameworks */,
@@ -159,14 +162,14 @@
 			);
 			dependencies = (
 			);
-			name = CAMonymous;
+			name = Noface;
 			productName = CAMonymous;
-			productReference = 43CD6F4119E89227007F2295 /* CAMonymous.app */;
+			productReference = 43CD6F4119E89227007F2295 /* Noface.app */;
 			productType = "com.apple.product-type.application";
 		};
-		43CD6F5519E89227007F2295 /* CAMonymousTests */ = {
+		43CD6F5519E89227007F2295 /* NofaceTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 43CD6F6319E89227007F2295 /* Build configuration list for PBXNativeTarget "CAMonymousTests" */;
+			buildConfigurationList = 43CD6F6319E89227007F2295 /* Build configuration list for PBXNativeTarget "NofaceTests" */;
 			buildPhases = (
 				43CD6F5219E89227007F2295 /* Sources */,
 				43CD6F5319E89227007F2295 /* Frameworks */,
@@ -177,9 +180,9 @@
 			dependencies = (
 				43CD6F5819E89227007F2295 /* PBXTargetDependency */,
 			);
-			name = CAMonymousTests;
+			name = NofaceTests;
 			productName = CAMonymousTests;
-			productReference = 43CD6F5619E89227007F2295 /* CAMonymousTests.xctest */;
+			productReference = 43CD6F5619E89227007F2295 /* NofaceTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -200,7 +203,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 43CD6F3C19E89227007F2295 /* Build configuration list for PBXProject "CAMonymous" */;
+			buildConfigurationList = 43CD6F3C19E89227007F2295 /* Build configuration list for PBXProject "Noface" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -213,8 +216,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				43CD6F4019E89227007F2295 /* CAMonymous */,
-				43CD6F5519E89227007F2295 /* CAMonymousTests */,
+				43CD6F4019E89227007F2295 /* Noface */,
+				43CD6F5519E89227007F2295 /* NofaceTests */,
 			);
 		};
 /* End PBXProject section */
@@ -253,6 +256,7 @@
 				43CD6F6B19E89409007F2295 /* Vertex.swift in Sources */,
 				43CD6F7919E8A392007F2295 /* CaptureManager.m in Sources */,
 				43CD6F6919E89284007F2295 /* Matrix4.m in Sources */,
+				439E087B19E9D8120039006B /* ToolbarViewController.swift in Sources */,
 				43CD6F4719E89227007F2295 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,7 +274,7 @@
 /* Begin PBXTargetDependency section */
 		43CD6F5819E89227007F2295 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 43CD6F4019E89227007F2295 /* CAMonymous */;
+			target = 43CD6F4019E89227007F2295 /* Noface */;
 			targetProxy = 43CD6F5719E89227007F2295 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -379,7 +383,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = CAMonymous/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Noface;
 				SWIFT_OBJC_BRIDGING_HEADER = "CAMonymous/CAMonymous-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -392,7 +396,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = CAMonymous/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Noface;
 				SWIFT_OBJC_BRIDGING_HEADER = "CAMonymous/CAMonymous-Bridging-Header.h";
 			};
 			name = Release;
@@ -411,7 +415,7 @@
 				);
 				INFOPLIST_FILE = CAMonymousTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = NofaceTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CAMonymous.app/CAMonymous";
 			};
 			name = Debug;
@@ -426,7 +430,7 @@
 				);
 				INFOPLIST_FILE = CAMonymousTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = NofaceTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CAMonymous.app/CAMonymous";
 			};
 			name = Release;
@@ -434,7 +438,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		43CD6F3C19E89227007F2295 /* Build configuration list for PBXProject "CAMonymous" */ = {
+		43CD6F3C19E89227007F2295 /* Build configuration list for PBXProject "Noface" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				43CD6F5E19E89227007F2295 /* Debug */,
@@ -443,21 +447,23 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		43CD6F6019E89227007F2295 /* Build configuration list for PBXNativeTarget "CAMonymous" */ = {
+		43CD6F6019E89227007F2295 /* Build configuration list for PBXNativeTarget "Noface" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				43CD6F6119E89227007F2295 /* Debug */,
 				43CD6F6219E89227007F2295 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		43CD6F6319E89227007F2295 /* Build configuration list for PBXNativeTarget "CAMonymousTests" */ = {
+		43CD6F6319E89227007F2295 /* Build configuration list for PBXNativeTarget "NofaceTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				43CD6F6419E89227007F2295 /* Debug */,
 				43CD6F6519E89227007F2295 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

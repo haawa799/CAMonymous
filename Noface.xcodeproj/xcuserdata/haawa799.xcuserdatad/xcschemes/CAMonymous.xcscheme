@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "43CD6F4019E89227007F2295"
-               BuildableName = "CAMonymous.app"
-               BlueprintName = "CAMonymous"
-               ReferencedContainer = "container:CAMonymous.xcodeproj">
+               BuildableName = "Noface.app"
+               BlueprintName = "Noface"
+               ReferencedContainer = "container:Noface.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "43CD6F5519E89227007F2295"
-               BuildableName = "CAMonymousTests.xctest"
-               BlueprintName = "CAMonymousTests"
-               ReferencedContainer = "container:CAMonymous.xcodeproj">
+               BuildableName = "NofaceTests.xctest"
+               BlueprintName = "NofaceTests"
+               ReferencedContainer = "container:Noface.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "43CD6F5519E89227007F2295"
-               BuildableName = "CAMonymousTests.xctest"
-               BlueprintName = "CAMonymousTests"
-               ReferencedContainer = "container:CAMonymous.xcodeproj">
+               BuildableName = "NofaceTests.xctest"
+               BlueprintName = "NofaceTests"
+               ReferencedContainer = "container:Noface.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "43CD6F4019E89227007F2295"
-            BuildableName = "CAMonymous.app"
-            BlueprintName = "CAMonymous"
-            ReferencedContainer = "container:CAMonymous.xcodeproj">
+            BuildableName = "Noface.app"
+            BlueprintName = "Noface"
+            ReferencedContainer = "container:Noface.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "43CD6F4019E89227007F2295"
-            BuildableName = "CAMonymous.app"
-            BlueprintName = "CAMonymous"
-            ReferencedContainer = "container:CAMonymous.xcodeproj">
+            BuildableName = "Noface.app"
+            BlueprintName = "Noface"
+            ReferencedContainer = "container:Noface.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "43CD6F4019E89227007F2295"
-            BuildableName = "CAMonymous.app"
-            BlueprintName = "CAMonymous"
-            ReferencedContainer = "container:CAMonymous.xcodeproj">
+            BuildableName = "Noface.app"
+            BlueprintName = "Noface"
+            ReferencedContainer = "container:Noface.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
