@@ -139,4 +139,41 @@
     return YES;
 } // finalize
 
+
+//
+
+
+- (UIImage *)image{
+  
+  void * p = self.bytes;
+  
+  CGColorSpaceRef pColorSpace = CGColorSpaceCreateDeviceRGB();
+  
+  CGContextRef pContext = CGBitmapContextCreate(p,
+                                                _width,
+                                                _height,
+                                                8,
+                                                _width * 4,
+                                                pColorSpace,
+                                                (CGBitmapInfo)kCGImageAlphaPremultipliedLast);
+  CGImageRef imgRef = CGBitmapContextCreateImage(pContext);
+  UIImage *image = [UIImage imageWithCGImage:imgRef];
+  
+  
+  return image;
+}
+
+- (void *)bytes
+{
+  uint32_t width    = _width;
+  uint32_t height   = _height;
+  uint32_t rowBytes = width * 4;
+  
+  void * p = malloc(width * height * 4);
+  
+  [self.texture getBytes:p bytesPerRow:rowBytes fromRegion:MTLRegionMake2D(0, 0, width, height) mipmapLevel:0];
+  
+  return p;
+}
+
 @end

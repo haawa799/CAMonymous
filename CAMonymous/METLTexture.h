@@ -30,4 +30,8 @@
 - (BOOL) finalize:(id<MTLDevice>)device
              flip:(BOOL)flip;
 
+- (UIImage *)image;
+
+- (void *)bytes;
+
 @end

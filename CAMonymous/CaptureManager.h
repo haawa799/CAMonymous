@@ -21,9 +21,12 @@
 
 @property(nonatomic,weak) id <CaptureManagerDelegate> delegate;
 @property(nonatomic,weak) id <MTLDevice> device;
+@property(nonatomic,weak) id <MTLTexture> lastFrameDisplayed;
 
 + (CaptureManager *)sharedManager;
 
 - (void)setupCaptureWithDevice:(id <MTLDevice>)device;
+
+- (void)savePicture;
 
 @end

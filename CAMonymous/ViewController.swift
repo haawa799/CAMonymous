@@ -39,7 +39,7 @@ class ViewController: UIViewController, CaptureManagerDelegate {
     metalLayer = CAMetalLayer()
     metalLayer.device = device
     metalLayer.pixelFormat = .BGRA8Unorm
-    metalLayer.framebufferOnly = true
+    metalLayer.framebufferOnly = false
     metalLayer.frame = view.layer.frame
     view.layer.addSublayer(metalLayer)
     
@@ -81,6 +81,8 @@ class ViewController: UIViewController, CaptureManagerDelegate {
     var worldModelMatrix = Matrix4()
     
     objectToDraw.render(commandQueue, pipelineState: pipelineState, drawable: drawable, parentModelViewMatrix: worldModelMatrix, projectionMatrix: projectionMatrix ,clearColor: nil)
+    
+    drawable.texture
     
   }
   

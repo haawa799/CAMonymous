@@ -9,8 +9,10 @@
 @import AVFoundation;
 @import CoreVideo;
 @import Metal;
+@import UIKit;
 
 #import "CaptureManager.h"
+#import <AssetsLibrary/AssetsLibrary.h>
 
 @interface CaptureManager()<AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureMetadataOutputObjectsDelegate>
 
@@ -143,6 +145,45 @@
       [self.delegate facesUpdated:nil numberOfFaces:numberOfFaces];
     }
   }
+}
+
+- (void)savePicture{
+  void * p = [self bytes:self.lastFrameDisplayed];
+  
+  CGColorSpaceRef pColorSpace = CGColorSpaceCreateDeviceRGB();
+  
+//  CGContextRef pContext = CGBitmapContextCreate(p,
+//                                                self.lastFrameDisplayed.width,
+//                                                self.lastFrameDisplayed.height,
+//                                                8,
+//                                                self.lastFrameDisplayed.width * 4,
+//                                                pColorSpace,
+//                                                (CGBitmapInfo)kCVPixelFormatType_32BGRA);
+  
+  CGBitmapInfo bitmapInfo = kCGBitmapByteOrder32Little | kCGImageAlphaNoneSkipFirst;
+  CGDataProviderRef provider = CGDataProviderCreateWithData( NULL, p, self.lastFrameDisplayed.width * 4 * self.lastFrameDisplayed.height , NULL);
+  CGImageRef imgRef = CGImageCreate(self.lastFrameDisplayed.width, self.lastFrameDisplayed.height, 8, 32, self.lastFrameDisplayed.width * 4, pColorSpace, bitmapInfo, provider, NULL, true, kCGRenderingIntentDefault);
+  CGDataProviderRelease(provider);
+  
+//  CGImageRef imgRef = CGBitmapContextCreateImage(pContext);
+  UIImage *image = [UIImage imageWithCGImage:imgRef];
+  [[[ALAssetsLibrary alloc] init] writeImageToSavedPhotosAlbum:[image CGImage] orientation:(ALAssetOrientation)[image imageOrientation] completionBlock:^(NSURL *assetURL, NSError *error) {
+    NSLog(@"%@",[error localizedDescription]);
+  }];
+  
+}
+
+- (void *)bytes:(id <MTLTexture>)tex
+{
+  uint32_t width    = (uint32_t) tex.width;
+  uint32_t height   = (uint32_t) tex.height;
+  uint32_t rowBytes = width * 4;
+  
+  void * p = malloc(width * height * 4);
+  
+  [tex getBytes:p bytesPerRow:rowBytes fromRegion:MTLRegionMake2D(0, 0, width, height) mipmapLevel:0];
+  
+  return p;
 }
 
 @end

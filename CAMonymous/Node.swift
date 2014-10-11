@@ -76,6 +76,13 @@ class Node: NSObject {
     renderPassDescriptor.colorAttachments.objectAtIndexedSubscript(0).storeAction = .Store
     
     let commandBuffer = commandQueue.commandBuffer()
+    commandBuffer.addCompletedHandler({
+      (buffer:MTLCommandBuffer!) -> Void in
+      
+      
+      CaptureManager.sharedManager().lastFrameDisplayed = drawable.texture;
+      
+    })
     
     let renderEncoder = commandBuffer.renderCommandEncoderWithDescriptor(renderPassDescriptor)!
     renderEncoder.setRenderPipelineState(pipelineState)
