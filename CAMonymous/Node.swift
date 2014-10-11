@@ -94,8 +94,11 @@ class Node: NSObject {
     renderEncoder.setFragmentBuffer(metaDataBuffer, offset: 0, atIndex: 0)
     
     if let facesBuffer = facesBuffer{
-      renderEncoder.setFragmentBuffer(facesBuffer, offset: 0, atIndex: 1)
+      
+    }else{
+      facesBuffer = device.newBufferWithBytes(&numberOfFaces, length: 16, options: MTLResourceOptions.OptionCPUCacheModeDefault)
     }
+    renderEncoder.setFragmentBuffer(facesBuffer, offset: 0, atIndex: 1)
     
     //For now cull mode is used instead of depth buffer
     renderEncoder.setCullMode(MTLCullMode.Front)

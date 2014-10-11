@@ -104,24 +104,19 @@
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection{
   
   NSUInteger numberOfFaces = metadataObjects.count;
-  NSUInteger currentFaceIndex = 0;
   
   if (numberOfFaces > 0){
     
     if (self.device != nil){
       
-      void *pointer = malloc(sizeof(float[4]) * numberOfFaces);
+      AVMetadataFaceObject *face = (AVMetadataFaceObject *)metadataObjects.firstObject;
+      float faceRect[4];
+      faceRect[0] = face.bounds.origin.x;
+      faceRect[1] = face.bounds.origin.y;
+      faceRect[2] = face.bounds.size.width;
+      faceRect[3] = face.bounds.size.height;
       
-      for (AVMetadataObject *metadata in metadataObjects) {
-        if ([metadata.type isEqualToString:AVMetadataObjectTypeFace]) {
-          AVMetadataFaceObject *face = (AVMetadataFaceObject *)metadata;
-          CGRect bounds = face.bounds;
-          float floatBuffer[4] = {bounds.origin.x, bounds.origin.y, bounds.size.width, bounds.size.height};
-          memcpy(pointer + sizeof(floatBuffer)*currentFaceIndex++, floatBuffer, sizeof(floatBuffer));
-        }
-      }
-      
-      id <MTLBuffer> metalBuffer = [self.device newBufferWithBytes:pointer length:sizeof(float[4])*numberOfFaces options:MTLResourceOptionCPUCacheModeDefault];
+      id <MTLBuffer> metalBuffer = [self.device newBufferWithBytes:&faceRect length:sizeof(float[4])*numberOfFaces options:MTLResourceOptionCPUCacheModeDefault];
       if (self.delegate != nil){
         [self.delegate facesUpdated:metalBuffer numberOfFaces:numberOfFaces];
       }

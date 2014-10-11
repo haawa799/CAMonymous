@@ -37,6 +37,8 @@ struct Face{
   float height;
 };
 
+bool pointIsOnFace(float2 point, Face face);
+
 vertex VertexOut basic_vertex(
                               const device VertexIn*  vertex_array [[ buffer(0) ]],
                               const device Uniforms&  uniforms     [[ buffer(1) ]],
@@ -66,15 +68,27 @@ fragment float4 basic_fragment(VertexOut interpolated [[stage_in]],
   
   if (data.numberOfRects > 0){
     
-    if (interpolated.position[0] < 200){
-      return float4(0.0,0.0,0.0,1.0);
+    Face face = faces[0];
+    
+    if (pointIsOnFace(interpolated.textureCoordinate,face)){
+      return float4(1.0,0.0,0.0,1.0);
     }
-//    Face face = faces[0];
     
   }
   
   return tex2D.sample(sampler2D, interpolated.textureCoordinate);
 }
 
+bool pointIsOnFace(float2 point, Face face){
+  
+  if ((point[0] < face.x) || (point[0] > face.x + face.width)){
+    return false;
+  }
+  if ((point[1] < face.y) || (point[1] > face.y + face.height)){
+    return false;
+  }
+  
+  return true;
+}
 
 
