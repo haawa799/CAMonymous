@@ -38,6 +38,7 @@ struct Face{
 };
 
 bool pointIsOnFace(float2 point, Face face);
+float4 grayscaleFromColor(float4 color);
 
 vertex VertexOut basic_vertex(
                               const device VertexIn*  vertex_array [[ buffer(0) ]],
@@ -68,11 +69,16 @@ fragment float4 basic_fragment(VertexOut interpolated [[stage_in]],
   
   if (data.numberOfRects > 0){
     
-    Face face = faces[0];
-    
-    if (pointIsOnFace(interpolated.textureCoordinate,face)){
-      return float4(1.0,0.0,0.0,1.0);
+    for (int i = 0; i<data.numberOfRects; i++){
+      Face face = faces[i];
+      if (pointIsOnFace(interpolated.textureCoordinate,face)){
+        return grayscaleFromColor(tex2D.sample(sampler2D, interpolated.textureCoordinate));//return float4(1.0,0.0,0.0,1.0);
+      }
     }
+    
+//    if (pointIsOnFace(interpolated.textureCoordinate,face)){
+//      return grayscaleFromColor(tex2D.sample(sampler2D, interpolated.textureCoordinate));//return float4(1.0,0.0,0.0,1.0);
+//    }
     
   }
   
@@ -90,5 +96,14 @@ bool pointIsOnFace(float2 point, Face face){
   
   return true;
 }
+
+constant float3 kRec709Luma = float3(0.2126, 0.7152, 0.0722);
+
+
+float4 grayscaleFromColor(float4 color){
+  float  gray     = dot(color.rgb, kRec709Luma);
+  return float4(gray, gray, gray, 1.0);
+}
+
 
 

@@ -109,14 +109,25 @@
     
     if (self.device != nil){
       
-      AVMetadataFaceObject *face = (AVMetadataFaceObject *)metadataObjects.firstObject;
-      float faceRect[4];
-      faceRect[0] = face.bounds.origin.x;
-      faceRect[1] = face.bounds.origin.y;
-      faceRect[2] = face.bounds.size.width;
-      faceRect[3] = face.bounds.size.height;
       
-      id <MTLBuffer> metalBuffer = [self.device newBufferWithBytes:&faceRect length:sizeof(float[4])*numberOfFaces options:MTLResourceOptionCPUCacheModeDefault];
+      NSUInteger numberOfFaceObjects = 4;
+      float buffer[4*4];
+      if (numberOfFaces < numberOfFaceObjects){
+        numberOfFaceObjects = numberOfFaces;
+      }
+      
+      for (int i = 0; i < numberOfFaceObjects; i++){
+        AVMetadataFaceObject *face = (AVMetadataFaceObject *)metadataObjects[i];
+        
+        buffer[0 + i*4] = face.bounds.origin.x;
+        buffer[1 + i*4] = face.bounds.origin.y;
+        buffer[2 + i*4] = face.bounds.size.width;
+        buffer[3 + i*4] = face.bounds.size.height;
+      }
+      
+      
+      
+      id <MTLBuffer> metalBuffer = [self.device newBufferWithBytes:&buffer length:sizeof(buffer)*numberOfFaces options:MTLResourceOptionCPUCacheModeDefault];
       if (self.delegate != nil){
         [self.delegate facesUpdated:metalBuffer numberOfFaces:numberOfFaces];
       }
