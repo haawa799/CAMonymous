@@ -77,25 +77,86 @@ fragment float4 basic_fragment(VertexOut interpolated [[stage_in]],
     for (int i = 0; i<data.numberOfRects; i++){
       Face face = faces[i];
       
-      float blurSizeX = 1.0 / (1920.0 * face.width);
-      float blurSizeY = 1.0 / (1080.0 * face.height);
+      float q;
+      
+      if (face.height < 0.25){
+        q = 266;
+      }else if (face.height < 0.5){
+        q = 130;
+      }else{
+        q = 90;
+      }
+      
+      float blurSizeX = 1.0 / (q);
+      float blurSizeY = 1.0 / (q);
       
       float2 pointInTexture = interpolated.textureCoordinate;
       
       if (pointIsOnFace(pointInTexture,face)){
         
         float4 sum = float4(0.0);
-        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 1.0*blurSizeX, pointInTexture.y - 1.0*blurSizeY)) * 0.0625;
-        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 0.0*blurSizeX, pointInTexture.y - 1.0*blurSizeY)) * 0.125;
-        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 1.0*blurSizeX, pointInTexture.y - 1.0*blurSizeY)) * 0.0625;
         
-        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 1.0*blurSizeX, pointInTexture.y - 0.0*blurSizeY)) * 0.125;
-        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 0.0*blurSizeX, pointInTexture.y - 0.0*blurSizeY)) * 0.25;
-        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 1.0*blurSizeX, pointInTexture.y - 0.0*blurSizeY)) * 0.125;
         
-        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 1.0*blurSizeX, pointInTexture.y + 1.0*blurSizeY)) * 0.0625;
-        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 0.0*blurSizeX, pointInTexture.y + 1.0*blurSizeY)) * 0.125;
-        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 1.0*blurSizeX, pointInTexture.y + 1.0*blurSizeY)) * 0.0625;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 3.0*blurSizeX, pointInTexture.y - 3.0*blurSizeY)) * 1/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 2.0*blurSizeX, pointInTexture.y - 3.0*blurSizeY)) * 1/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 1.0*blurSizeX, pointInTexture.y - 3.0*blurSizeY)) * 2/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 0.0*blurSizeX, pointInTexture.y - 3.0*blurSizeY)) * 2/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 1.0*blurSizeX, pointInTexture.y - 3.0*blurSizeY)) * 2/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 2.0*blurSizeX, pointInTexture.y - 3.0*blurSizeY)) * 1/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 3.0*blurSizeX, pointInTexture.y - 3.0*blurSizeY)) * 1/170;
+        
+        
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 3.0*blurSizeX, pointInTexture.y - 2.0*blurSizeY)) * 1/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 2.0*blurSizeX, pointInTexture.y - 2.0*blurSizeY)) * 3/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 1.0*blurSizeX, pointInTexture.y - 2.0*blurSizeY)) * 4/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 0.0*blurSizeX, pointInTexture.y - 2.0*blurSizeY)) * 5/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 1.0*blurSizeX, pointInTexture.y - 2.0*blurSizeY)) * 4/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 2.0*blurSizeX, pointInTexture.y - 2.0*blurSizeY)) * 3/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 3.0*blurSizeX, pointInTexture.y - 2.0*blurSizeY)) * 1/170;
+        
+        
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 3.0*blurSizeX, pointInTexture.y - 1.0*blurSizeY)) * 2/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 2.0*blurSizeX, pointInTexture.y - 1.0*blurSizeY)) * 4/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 1.0*blurSizeX, pointInTexture.y - 1.0*blurSizeY)) * 7/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 0.0*blurSizeX, pointInTexture.y - 1.0*blurSizeY)) * 8/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 1.0*blurSizeX, pointInTexture.y - 1.0*blurSizeY)) * 7/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 2.0*blurSizeX, pointInTexture.y - 1.0*blurSizeY)) * 4/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 3.0*blurSizeX, pointInTexture.y - 1.0*blurSizeY)) * 2/170;
+        
+        
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 3.0*blurSizeX, pointInTexture.y + 0.0*blurSizeY)) * 2/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 2.0*blurSizeX, pointInTexture.y + 0.0*blurSizeY)) * 5/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 1.0*blurSizeX, pointInTexture.y + 0.0*blurSizeY)) * 8/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 0.0*blurSizeX, pointInTexture.y + 0.0*blurSizeY)) * 10/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 1.0*blurSizeX, pointInTexture.y + 0.0*blurSizeY)) * 8/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 2.0*blurSizeX, pointInTexture.y + 0.0*blurSizeY)) * 5/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 3.0*blurSizeX, pointInTexture.y + 0.0*blurSizeY)) * 2/170;
+        
+        
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 3.0*blurSizeX, pointInTexture.y + 1.0*blurSizeY)) * 2/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 2.0*blurSizeX, pointInTexture.y + 1.0*blurSizeY)) * 4/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 1.0*blurSizeX, pointInTexture.y + 1.0*blurSizeY)) * 7/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 0.0*blurSizeX, pointInTexture.y + 1.0*blurSizeY)) * 8/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 1.0*blurSizeX, pointInTexture.y + 1.0*blurSizeY)) * 7/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 2.0*blurSizeX, pointInTexture.y + 1.0*blurSizeY)) * 4/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 3.0*blurSizeX, pointInTexture.y + 1.0*blurSizeY)) * 2/170;
+        
+        
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 3.0*blurSizeX, pointInTexture.y + 2.0*blurSizeY)) * 1/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 2.0*blurSizeX, pointInTexture.y + 2.0*blurSizeY)) * 3/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 1.0*blurSizeX, pointInTexture.y + 2.0*blurSizeY)) * 4/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 0.0*blurSizeX, pointInTexture.y + 2.0*blurSizeY)) * 5/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 1.0*blurSizeX, pointInTexture.y + 2.0*blurSizeY)) * 4/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 2.0*blurSizeX, pointInTexture.y + 2.0*blurSizeY)) * 3/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 3.0*blurSizeX, pointInTexture.y + 2.0*blurSizeY)) * 1/170;
+        
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 3.0*blurSizeX, pointInTexture.y + 3.0*blurSizeY)) * 1/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 2.0*blurSizeX, pointInTexture.y + 3.0*blurSizeY)) * 1/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 1.0*blurSizeX, pointInTexture.y + 3.0*blurSizeY)) * 2/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 0.0*blurSizeX, pointInTexture.y + 3.0*blurSizeY)) * 2/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 1.0*blurSizeX, pointInTexture.y + 3.0*blurSizeY)) * 2/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 2.0*blurSizeX, pointInTexture.y + 3.0*blurSizeY)) * 1/170;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 3.0*blurSizeX, pointInTexture.y + 3.0*blurSizeY)) * 1/170;
         
         return sum;//  sum1);//grayscaleFromColor(tex2D.sample(sampler2D, pointInTexture));
       }
@@ -112,10 +173,10 @@ fragment float4 basic_fragment(VertexOut interpolated [[stage_in]],
 
 bool pointIsOnFace(float2 point, Face face){
   
-  if ((point[0] < face.x) || (point[0] > face.x + face.width)){
+  if ((point[0] < 0.9*face.x) || (point[0] > face.x + 1.1*face.width)){
     return false;
   }
-  if ((point[1] < face.y) || (point[1] > face.y + face.height)){
+  if ((point[1] < 0.9*face.y) || (point[1] > face.y + 1.1*face.height)){
     return false;
   }
   

@@ -24,4 +24,14 @@ class Square: Node {
     super.init(name: "Square", vertices: verticesArray, device: device)
     
   }
+  
+  override func updateWithDelta(delta: CFTimeInterval) {
+    
+    super.updateWithDelta(delta)
+    
+    var secsPerMove: Float = 6.0
+//    rotationY = sinf( Float(time) * 2.0 * Float(M_PI) / secsPerMove)/8
+//    rotationX = sinf( Float(time) * 2.0 * Float(M_PI) / secsPerMove)/8
+  }
+  
 }
