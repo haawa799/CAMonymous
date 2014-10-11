@@ -96,7 +96,7 @@ class Node: NSObject {
     if let facesBuffer = facesBuffer{
       
     }else{
-      facesBuffer = device.newBufferWithBytes(&numberOfFaces, length: 16, options: MTLResourceOptions.OptionCPUCacheModeDefault)
+      facesBuffer = device.newBufferWithBytes(&numberOfFaces, length: 6*4, options: MTLResourceOptions.OptionCPUCacheModeDefault)
     }
     renderEncoder.setFragmentBuffer(facesBuffer, offset: 0, atIndex: 1)
     

@@ -111,7 +111,8 @@
       
       
       NSUInteger numberOfFaceObjects = 4;
-      float buffer[4*4];
+      NSUInteger numberOfComponents = 6;
+      float buffer[numberOfComponents*numberOfFaceObjects];
       if (numberOfFaces < numberOfFaceObjects){
         numberOfFaceObjects = numberOfFaces;
       }
@@ -119,10 +120,12 @@
       for (int i = 0; i < numberOfFaceObjects; i++){
         AVMetadataFaceObject *face = (AVMetadataFaceObject *)metadataObjects[i];
         
-        buffer[0 + i*4] = face.bounds.origin.x;
-        buffer[1 + i*4] = face.bounds.origin.y;
-        buffer[2 + i*4] = face.bounds.size.width;
-        buffer[3 + i*4] = face.bounds.size.height;
+        buffer[0 + i*numberOfComponents] = face.bounds.origin.x;
+        buffer[1 + i*numberOfComponents] = face.bounds.origin.y;
+        buffer[2 + i*numberOfComponents] = face.bounds.size.width;
+        buffer[3 + i*numberOfComponents] = face.bounds.size.height;
+        buffer[4 + i*numberOfComponents] = face.rollAngle;
+        buffer[5 + i*numberOfComponents] = face.yawAngle;
       }
       
       

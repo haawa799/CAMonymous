@@ -35,10 +35,15 @@ struct Face{
   float y;
   float width;
   float height;
+  float rollAngle;
+  float yawlAngle;
 };
+
+const float blurSize = 1.0/512.0;
 
 bool pointIsOnFace(float2 point, Face face);
 float4 grayscaleFromColor(float4 color);
+float distanceBetweenTwoPoints(float2 point1, float2 point2);
 
 vertex VertexOut basic_vertex(
                               const device VertexIn*  vertex_array [[ buffer(0) ]],
@@ -71,8 +76,20 @@ fragment float4 basic_fragment(VertexOut interpolated [[stage_in]],
     
     for (int i = 0; i<data.numberOfRects; i++){
       Face face = faces[i];
-      if (pointIsOnFace(interpolated.textureCoordinate,face)){
-        return grayscaleFromColor(tex2D.sample(sampler2D, interpolated.textureCoordinate));//return float4(1.0,0.0,0.0,1.0);
+      
+      float2 pointInTexture = interpolated.textureCoordinate;
+      float screenWidth = 1336;
+      
+      if (pointIsOnFace(pointInTexture,face)){
+        
+        int coordX = pointInTexture[0]*screenWidth;
+        
+//        float2 center = float2(face.x+face.width/2,face.y+face.height/2);
+//        if (distanceBetweenTwoPoints(pointInTexture,center) < face.height/1.9){
+          return grayscaleFromColor(tex2D.sample(sampler2D, pointInTexture));
+//        }
+        
+        //return float4(1.0,0.0,0.0,1.0);
       }
     }
     
@@ -105,5 +122,10 @@ float4 grayscaleFromColor(float4 color){
   return float4(gray, gray, gray, 1.0);
 }
 
+float distanceBetweenTwoPoints(float2 point1, float2 point2){
+  float a = point1[0]-point2[0];
+  float b = point1[1]-point2[1];
+  return sqrt(a*a + b*b);
+}
 
 
