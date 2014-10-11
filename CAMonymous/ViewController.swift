@@ -137,8 +137,9 @@ class ViewController: UIViewController, CaptureManagerDelegate {
     objectToDraw.texture! = texture
   }
   
-  func facesUpdated(buffer: MTLBuffer!) {
-    //
+  func facesUpdated(buffer: MTLBuffer!, numberOfFaces: Int) {
+    objectToDraw.numberOfFaces = numberOfFaces
+    objectToDraw.facesBuffer = buffer
   }
   
 }

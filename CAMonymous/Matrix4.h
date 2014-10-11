@@ -17,7 +17,6 @@
 
 @property(nonatomic, readonly) int lengthInBytes;
 
-
 + (Matrix4 *)makePerspectiveViewAngle:(float)angleRad
                           aspectRatio:(float)aspect
                                 nearZ:(float)nearZ

@@ -123,11 +123,15 @@
       
       id <MTLBuffer> metalBuffer = [self.device newBufferWithBytes:pointer length:sizeof(float[4])*numberOfFaces options:MTLResourceOptionCPUCacheModeDefault];
       if (self.delegate != nil){
-        [self.delegate facesUpdated:metalBuffer];
+        [self.delegate facesUpdated:metalBuffer numberOfFaces:numberOfFaces];
       }
       
     }else{
       NSLog(@"device == nil =(");
+    }
+  }else{
+    if (self.delegate != nil){
+      [self.delegate facesUpdated:nil numberOfFaces:numberOfFaces];
     }
   }
 }

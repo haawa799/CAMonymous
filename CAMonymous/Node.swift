@@ -32,6 +32,9 @@ class Node: NSObject {
   
   var texture: MTLTexture?
   var samplerState: MTLSamplerState?
+  
+  var numberOfFaces:Int = 0
+  var metadataBuffer: MTLBuffer?
   var facesBuffer: MTLBuffer?
   
   var device: MTLDevice
@@ -86,11 +89,13 @@ class Node: NSObject {
       renderEncoder.setFragmentSamplerState(samplerState, atIndex: 0)
     }
     
-//    if let facesBuffer = facesBuffer{
-//      renderEncoder.setFragmentBuffer(facesBuffer, offset: 0, atIndex: 0)
-//    }else{
-//      renderEncoder.set
-//    }
+    //Metadata buffer
+    var metaDataBuffer = device.newBufferWithBytes(&numberOfFaces, length: sizeofValue(numberOfFaces), options: MTLResourceOptions.OptionCPUCacheModeDefault)
+    renderEncoder.setFragmentBuffer(metaDataBuffer, offset: 0, atIndex: 0)
+    
+    if let facesBuffer = facesBuffer{
+      renderEncoder.setFragmentBuffer(facesBuffer, offset: 0, atIndex: 1)
+    }
     
     //For now cull mode is used instead of depth buffer
     renderEncoder.setCullMode(MTLCullMode.Front)

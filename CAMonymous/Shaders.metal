@@ -26,6 +26,17 @@ struct Uniforms{
   float4x4 projectionMatrix;
 };
 
+struct Metadata{
+  int numberOfRects;
+};
+
+struct Face{
+  float x;
+  float y;
+  float width;
+  float height;
+};
+
 vertex VertexOut basic_vertex(
                               const device VertexIn*  vertex_array [[ buffer(0) ]],
                               const device Uniforms&  uniforms     [[ buffer(1) ]],
@@ -45,9 +56,25 @@ vertex VertexOut basic_vertex(
 }
 
 fragment float4 basic_fragment(VertexOut interpolated [[stage_in]],
+                               const device Metadata*  metadatas [[ buffer(0) ]],
+                               const device Face*  faces [[ buffer(1) ]],
                                texture2d<float>  tex2D     [[ texture(0) ]],
                                sampler           sampler2D [[ sampler(0) ]])
 {
+  
+  Metadata data = metadatas[0];
+  
+  if (data.numberOfRects > 0){
+    
+    if (interpolated.position[0] < 200){
+      return float4(0.0,0.0,0.0,1.0);
+    }
+//    Face face = faces[0];
+    
+  }
+  
   return tex2D.sample(sampler2D, interpolated.textureCoordinate);
 }
+
+
 

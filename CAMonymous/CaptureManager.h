@@ -13,7 +13,7 @@
 @protocol CaptureManagerDelegate <NSObject>
 
 - (void)textureUpdated:(id <MTLTexture>)texture;
-- (void)facesUpdated:(id <MTLBuffer>)buffer;
+- (void)facesUpdated:(id <MTLBuffer>)buffer numberOfFaces:(NSInteger)faces;
 
 @end
 
