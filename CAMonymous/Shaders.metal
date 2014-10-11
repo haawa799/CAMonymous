@@ -39,7 +39,7 @@ struct Face{
   float yawlAngle;
 };
 
-const float blurSize = 1.0/512.0;
+constant float blurSize = 1.0/256.0;
 
 bool pointIsOnFace(float2 point, Face face);
 float4 grayscaleFromColor(float4 color);
@@ -78,18 +78,32 @@ fragment float4 basic_fragment(VertexOut interpolated [[stage_in]],
       Face face = faces[i];
       
       float2 pointInTexture = interpolated.textureCoordinate;
-      float screenWidth = 1336;
       
       if (pointIsOnFace(pointInTexture,face)){
         
-        int coordX = pointInTexture[0]*screenWidth;
+        float4 sum = float4(0.0);
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 4.0*blurSize, pointInTexture.y)) * 0.05;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 3.0*blurSize, pointInTexture.y)) * 0.09;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 2.0*blurSize, pointInTexture.y)) * 0.12;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 1.0*blurSize, pointInTexture.y)) * 0.15;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x, pointInTexture.y)) * 0.16;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 1.0*blurSize, pointInTexture.y)) * 0.15;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 2.0*blurSize, pointInTexture.y)) * 0.12;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 3.0*blurSize, pointInTexture.y)) * 0.09;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 4.0*blurSize, pointInTexture.y)) * 0.05;
         
-//        float2 center = float2(face.x+face.width/2,face.y+face.height/2);
-//        if (distanceBetweenTwoPoints(pointInTexture,center) < face.height/1.9){
-          return grayscaleFromColor(tex2D.sample(sampler2D, pointInTexture));
-//        }
+        float4 sum1 = float4(0.0);
+        sum1 += tex2D.sample(sampler2D, float2(pointInTexture.x, pointInTexture.y - 4.0*blurSize)) * 0.05;
+        sum1 += tex2D.sample(sampler2D, float2(pointInTexture.x, pointInTexture.y - 3.0*blurSize)) * 0.09;
+        sum1 += tex2D.sample(sampler2D, float2(pointInTexture.x, pointInTexture.y - 2.0*blurSize)) * 0.12;
+        sum1 += tex2D.sample(sampler2D, float2(pointInTexture.x, pointInTexture.y - 1.0*blurSize)) * 0.15;
+        sum1 += tex2D.sample(sampler2D, float2(pointInTexture.x, pointInTexture.y)) * 0.16;
+        sum1 += tex2D.sample(sampler2D, float2(pointInTexture.x, pointInTexture.y + 1.0*blurSize)) * 0.15;
+        sum1 += tex2D.sample(sampler2D, float2(pointInTexture.x, pointInTexture.y + 2.0*blurSize)) * 0.12;
+        sum1 += tex2D.sample(sampler2D, float2(pointInTexture.x, pointInTexture.y + 3.0*blurSize)) * 0.09;
+        sum1 += tex2D.sample(sampler2D, float2(pointInTexture.x, pointInTexture.y + 4.0*blurSize)) * 0.05;
         
-        //return float4(1.0,0.0,0.0,1.0);
+        return (sum + sum1);//grayscaleFromColor(tex2D.sample(sampler2D, pointInTexture));
       }
     }
     
