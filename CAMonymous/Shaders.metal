@@ -77,33 +77,27 @@ fragment float4 basic_fragment(VertexOut interpolated [[stage_in]],
     for (int i = 0; i<data.numberOfRects; i++){
       Face face = faces[i];
       
+      float blurSizeX = 1.0 / (1920.0 * face.width);
+      float blurSizeY = 1.0 / (1080.0 * face.height);
+      
       float2 pointInTexture = interpolated.textureCoordinate;
       
       if (pointIsOnFace(pointInTexture,face)){
         
         float4 sum = float4(0.0);
-        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 4.0*blurSize, pointInTexture.y)) * 0.05;
-        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 3.0*blurSize, pointInTexture.y)) * 0.09;
-        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 2.0*blurSize, pointInTexture.y)) * 0.12;
-        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 1.0*blurSize, pointInTexture.y)) * 0.15;
-        sum += tex2D.sample(sampler2D, float2(pointInTexture.x, pointInTexture.y)) * 0.16;
-        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 1.0*blurSize, pointInTexture.y)) * 0.15;
-        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 2.0*blurSize, pointInTexture.y)) * 0.12;
-        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 3.0*blurSize, pointInTexture.y)) * 0.09;
-        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 4.0*blurSize, pointInTexture.y)) * 0.05;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 1.0*blurSizeX, pointInTexture.y - 1.0*blurSizeY)) * 0.0625;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 0.0*blurSizeX, pointInTexture.y - 1.0*blurSizeY)) * 0.125;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 1.0*blurSizeX, pointInTexture.y - 1.0*blurSizeY)) * 0.0625;
         
-        float4 sum1 = float4(0.0);
-        sum1 += tex2D.sample(sampler2D, float2(pointInTexture.x, pointInTexture.y - 4.0*blurSize)) * 0.05;
-        sum1 += tex2D.sample(sampler2D, float2(pointInTexture.x, pointInTexture.y - 3.0*blurSize)) * 0.09;
-        sum1 += tex2D.sample(sampler2D, float2(pointInTexture.x, pointInTexture.y - 2.0*blurSize)) * 0.12;
-        sum1 += tex2D.sample(sampler2D, float2(pointInTexture.x, pointInTexture.y - 1.0*blurSize)) * 0.15;
-        sum1 += tex2D.sample(sampler2D, float2(pointInTexture.x, pointInTexture.y)) * 0.16;
-        sum1 += tex2D.sample(sampler2D, float2(pointInTexture.x, pointInTexture.y + 1.0*blurSize)) * 0.15;
-        sum1 += tex2D.sample(sampler2D, float2(pointInTexture.x, pointInTexture.y + 2.0*blurSize)) * 0.12;
-        sum1 += tex2D.sample(sampler2D, float2(pointInTexture.x, pointInTexture.y + 3.0*blurSize)) * 0.09;
-        sum1 += tex2D.sample(sampler2D, float2(pointInTexture.x, pointInTexture.y + 4.0*blurSize)) * 0.05;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 1.0*blurSizeX, pointInTexture.y - 0.0*blurSizeY)) * 0.125;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 0.0*blurSizeX, pointInTexture.y - 0.0*blurSizeY)) * 0.25;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 1.0*blurSizeX, pointInTexture.y - 0.0*blurSizeY)) * 0.125;
         
-        return (sum + sum1);//grayscaleFromColor(tex2D.sample(sampler2D, pointInTexture));
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 1.0*blurSizeX, pointInTexture.y + 1.0*blurSizeY)) * 0.0625;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x - 0.0*blurSizeX, pointInTexture.y + 1.0*blurSizeY)) * 0.125;
+        sum += tex2D.sample(sampler2D, float2(pointInTexture.x + 1.0*blurSizeX, pointInTexture.y + 1.0*blurSizeY)) * 0.0625;
+        
+        return sum;//  sum1);//grayscaleFromColor(tex2D.sample(sampler2D, pointInTexture));
       }
     }
     
@@ -140,6 +134,22 @@ float distanceBetweenTwoPoints(float2 point1, float2 point2){
   float a = point1[0]-point2[0];
   float b = point1[1]-point2[1];
   return sqrt(a*a + b*b);
+}
+
+
+kernel void grayscale(texture2d<float, access::read>  inTexture   [[ texture(0) ]],
+                      texture2d<float, access::write> outTexture  [[ texture(1) ]],
+                      uint2                           gid         [[ thread_position_in_grid ]])
+{
+  float4 inColor  = inTexture.read(gid);
+  float  gray     = dot(inColor.rgb, kRec709Luma);
+  float4 outColor = float4(gray, gray, gray, 1.0);
+  
+  if (inColor[3] < 0.6){
+    outColor[3] = inColor[3];
+  }
+  
+  outTexture.write(outColor, gid);
 }
 
 
