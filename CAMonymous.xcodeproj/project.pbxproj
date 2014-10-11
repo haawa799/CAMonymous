@@ -13,6 +13,14 @@
 		43CD6F4E19E89227007F2295 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43CD6F4D19E89227007F2295 /* Images.xcassets */; };
 		43CD6F5119E89227007F2295 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43CD6F4F19E89227007F2295 /* LaunchScreen.xib */; };
 		43CD6F5D19E89227007F2295 /* CAMonymousTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CD6F5C19E89227007F2295 /* CAMonymousTests.swift */; };
+		43CD6F6919E89284007F2295 /* Matrix4.m in Sources */ = {isa = PBXBuildFile; fileRef = 43CD6F6819E89284007F2295 /* Matrix4.m */; };
+		43CD6F6B19E89409007F2295 /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CD6F6A19E89409007F2295 /* Vertex.swift */; };
+		43CD6F6D19E89434007F2295 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CD6F6C19E89434007F2295 /* Node.swift */; };
+		43CD6F6F19E8986A007F2295 /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CD6F6E19E8986A007F2295 /* Square.swift */; };
+		43CD6F7219E8988C007F2295 /* METLTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = 43CD6F7119E8988C007F2295 /* METLTexture.m */; };
+		43CD6F7419E899C1007F2295 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 43CD6F7319E899C1007F2295 /* Shaders.metal */; };
+		43CD6F7619E89BA3007F2295 /* dessert.png in Resources */ = {isa = PBXBuildFile; fileRef = 43CD6F7519E89BA3007F2295 /* dessert.png */; };
+		43CD6F7919E8A392007F2295 /* CaptureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 43CD6F7819E8A392007F2295 /* CaptureManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +44,18 @@
 		43CD6F5619E89227007F2295 /* CAMonymousTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CAMonymousTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		43CD6F5B19E89227007F2295 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43CD6F5C19E89227007F2295 /* CAMonymousTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAMonymousTests.swift; sourceTree = "<group>"; };
+		43CD6F6619E89284007F2295 /* CAMonymous-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CAMonymous-Bridging-Header.h"; sourceTree = "<group>"; };
+		43CD6F6719E89284007F2295 /* Matrix4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Matrix4.h; sourceTree = "<group>"; };
+		43CD6F6819E89284007F2295 /* Matrix4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Matrix4.m; sourceTree = "<group>"; };
+		43CD6F6A19E89409007F2295 /* Vertex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vertex.swift; sourceTree = "<group>"; };
+		43CD6F6C19E89434007F2295 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		43CD6F6E19E8986A007F2295 /* Square.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
+		43CD6F7019E8988C007F2295 /* METLTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = METLTexture.h; sourceTree = "<group>"; };
+		43CD6F7119E8988C007F2295 /* METLTexture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = METLTexture.m; sourceTree = "<group>"; };
+		43CD6F7319E899C1007F2295 /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
+		43CD6F7519E89BA3007F2295 /* dessert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dessert.png; sourceTree = "<group>"; };
+		43CD6F7719E8A392007F2295 /* CaptureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureManager.h; sourceTree = "<group>"; };
+		43CD6F7819E8A392007F2295 /* CaptureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptureManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,10 +99,22 @@
 			children = (
 				43CD6F4619E89227007F2295 /* AppDelegate.swift */,
 				43CD6F4819E89227007F2295 /* ViewController.swift */,
+				43CD6F7719E8A392007F2295 /* CaptureManager.h */,
+				43CD6F7819E8A392007F2295 /* CaptureManager.m */,
+				43CD6F7319E899C1007F2295 /* Shaders.metal */,
 				43CD6F4A19E89227007F2295 /* Main.storyboard */,
+				43CD6F7519E89BA3007F2295 /* dessert.png */,
 				43CD6F4D19E89227007F2295 /* Images.xcassets */,
 				43CD6F4F19E89227007F2295 /* LaunchScreen.xib */,
 				43CD6F4419E89227007F2295 /* Supporting Files */,
+				43CD6F6719E89284007F2295 /* Matrix4.h */,
+				43CD6F6819E89284007F2295 /* Matrix4.m */,
+				43CD6F6A19E89409007F2295 /* Vertex.swift */,
+				43CD6F6C19E89434007F2295 /* Node.swift */,
+				43CD6F6E19E8986A007F2295 /* Square.swift */,
+				43CD6F7019E8988C007F2295 /* METLTexture.h */,
+				43CD6F7119E8988C007F2295 /* METLTexture.m */,
+				43CD6F6619E89284007F2295 /* CAMonymous-Bridging-Header.h */,
 			);
 			path = CAMonymous;
 			sourceTree = "<group>";
@@ -193,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				43CD6F4C19E89227007F2295 /* Main.storyboard in Resources */,
+				43CD6F7619E89BA3007F2295 /* dessert.png in Resources */,
 				43CD6F5119E89227007F2295 /* LaunchScreen.xib in Resources */,
 				43CD6F4E19E89227007F2295 /* Images.xcassets in Resources */,
 			);
@@ -212,7 +245,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43CD6F7419E899C1007F2295 /* Shaders.metal in Sources */,
+				43CD6F6F19E8986A007F2295 /* Square.swift in Sources */,
+				43CD6F7219E8988C007F2295 /* METLTexture.m in Sources */,
 				43CD6F4919E89227007F2295 /* ViewController.swift in Sources */,
+				43CD6F6D19E89434007F2295 /* Node.swift in Sources */,
+				43CD6F6B19E89409007F2295 /* Vertex.swift in Sources */,
+				43CD6F7919E8A392007F2295 /* CaptureManager.m in Sources */,
+				43CD6F6919E89284007F2295 /* Matrix4.m in Sources */,
 				43CD6F4719E89227007F2295 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,9 +376,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = CAMonymous/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CAMonymous/CAMonymous-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -346,9 +389,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = CAMonymous/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CAMonymous/CAMonymous-Bridging-Header.h";
 			};
 			name = Release;
 		};
