@@ -9,27 +9,22 @@
 import UIKit
 
 class ToolbarViewController: UIViewController {
+  
+  let colorUsual = UIColor(red: 255.0/255.0, green: 153.0/255.0, blue: 153.0/255.0, alpha: 0.12)
+  let colorHighlighted = UIColor(red: 255.0/255.0, green: 153.0/255.0, blue: 153.0/255.0, alpha: 0.5)
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+  @IBOutlet weak var toolbar: UIView!
+  @IBAction func cameraButtonPressed(sender: AnyObject) {
+    UIView.animateWithDuration(0.1, animations: { () -> Void in
+      self.toolbar.backgroundColor = self.colorHighlighted
+    }) { (success) -> Void in
+      CaptureManager.sharedManager().savePicture()
+      UIView.animateWithDuration(0.1, animations: { () -> Void in
+        self.toolbar.backgroundColor = self.colorUsual
+        }) { (success) -> Void in
+          //
+      }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+  }
+  
 }

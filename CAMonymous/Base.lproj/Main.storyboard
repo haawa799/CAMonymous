@@ -18,34 +18,62 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9In-La-zej">
-                                <rect key="frame" x="0.0" y="4" width="600" height="596"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <connections>
                                     <segue destination="jRE-Eg-7pk" kind="embed" id="sGc-dp-KNc"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rE9-2B-qWd">
-                                <rect key="frame" x="0.0" y="535" width="600" height="65"/>
-                                <color key="backgroundColor" red="1" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="535" y="0.0" width="65" height="600"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mny-AP-FU9">
+                                        <rect key="frame" x="10" y="278" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="PHw-xU-ND5"/>
+                                            <constraint firstAttribute="width" constant="44" id="lnR-wM-PYr"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="camera">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cameraButtonPressed:" destination="JSS-4d-Y48" eventType="touchDown" id="daf-hZ-mSY"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.59999999999999998" blue="0.59999999999999998" alpha="0.12" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="65" id="czf-Uu-V4x"/>
+                                    <constraint firstAttribute="centerX" secondItem="mny-AP-FU9" secondAttribute="centerX" id="6Vh-6b-spD"/>
+                                    <constraint firstAttribute="width" constant="65" id="fgm-JO-2Ly"/>
+                                    <constraint firstAttribute="centerY" secondItem="mny-AP-FU9" secondAttribute="centerY" id="lCA-9M-Cag"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="rE9-2B-qWd" secondAttribute="trailing" constant="-16" id="6Tk-tE-jfA"/>
-                            <constraint firstItem="meJ-nt-spP" firstAttribute="top" secondItem="rE9-2B-qWd" secondAttribute="bottom" id="V01-fI-Nop"/>
-                            <constraint firstItem="9In-La-zej" firstAttribute="top" secondItem="D2L-kT-06i" secondAttribute="bottom" constant="-16" id="XOO-ei-Nfj"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="9In-La-zej" secondAttribute="trailing" constant="-16" id="hBJ-aY-xit"/>
-                            <constraint firstItem="rE9-2B-qWd" firstAttribute="leading" secondItem="gTH-Xc-Uqt" secondAttribute="leadingMargin" constant="-16" id="hd3-Uh-Reh"/>
-                            <constraint firstItem="9In-La-zej" firstAttribute="leading" secondItem="gTH-Xc-Uqt" secondAttribute="leadingMargin" constant="-16" id="nYq-88-GjH"/>
-                            <constraint firstItem="meJ-nt-spP" firstAttribute="top" secondItem="9In-La-zej" secondAttribute="bottom" id="vWa-gz-67o"/>
+                            <constraint firstItem="9In-La-zej" firstAttribute="top" secondItem="gTH-Xc-Uqt" secondAttribute="topMargin" id="72m-qj-wRJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rE9-2B-qWd" secondAttribute="trailing" constant="-16" id="7ah-pz-3nO"/>
+                            <constraint firstItem="rE9-2B-qWd" firstAttribute="top" secondItem="gTH-Xc-Uqt" secondAttribute="topMargin" id="95r-e5-FZy"/>
+                            <constraint firstItem="meJ-nt-spP" firstAttribute="top" secondItem="rE9-2B-qWd" secondAttribute="bottom" id="RJ4-B9-AST"/>
+                            <constraint firstItem="rE9-2B-qWd" firstAttribute="leading" secondItem="gTH-Xc-Uqt" secondAttribute="leadingMargin" constant="-16" id="dSu-rI-S6Y"/>
+                            <constraint firstItem="9In-La-zej" firstAttribute="leading" secondItem="gTH-Xc-Uqt" secondAttribute="leadingMargin" constant="-16" id="fHw-Y1-3jg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rE9-2B-qWd" secondAttribute="trailing" constant="-16" id="jI8-Yu-W4d"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="9In-La-zej" secondAttribute="trailing" constant="-16" id="nih-aU-pdv"/>
+                            <constraint firstItem="meJ-nt-spP" firstAttribute="top" secondItem="9In-La-zej" secondAttribute="bottom" id="o6Z-rJ-oDF"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="dSu-rI-S6Y"/>
+                                <exclude reference="jI8-Yu-W4d"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="toolbar" destination="rE9-2B-qWd" id="iy5-Ju-etr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RVm-oh-GAc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="376" y="1115"/>
+            <point key="canvasLocation" x="-612" y="-367"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="dfW-xo-nNf">
@@ -56,7 +84,7 @@
                         <viewControllerLayoutGuide type="bottom" id="2Z4-RR-c1a"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="F9J-b2-wTM">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="596"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -64,7 +92,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z0w-VB-tLG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="234" y="1756"/>
+            <point key="canvasLocation" x="-390" y="476"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="camera" width="256" height="256"/>
+    </resources>
 </document>

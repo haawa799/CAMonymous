@@ -39,8 +39,6 @@ struct Face{
   float yawlAngle;
 };
 
-constant float blurSize = 1.0/256.0;
-
 bool pointIsOnFace(float2 point, Face face);
 float4 grayscaleFromColor(float4 color);
 float distanceBetweenTwoPoints(float2 point1, float2 point2);
