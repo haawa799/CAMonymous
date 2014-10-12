@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		439AE4BA19EA6504005409B6 /* Noface_presentation.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 439AE4B919EA6504005409B6 /* Noface_presentation.pdf */; };
 		439E087B19E9D8120039006B /* ToolbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439E087A19E9D8120039006B /* ToolbarViewController.swift */; };
 		43CD6F4719E89227007F2295 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CD6F4619E89227007F2295 /* AppDelegate.swift */; };
 		43CD6F4919E89227007F2295 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CD6F4819E89227007F2295 /* ViewController.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		439AE4B919EA6504005409B6 /* Noface_presentation.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Noface_presentation.pdf; sourceTree = "<group>"; };
 		439E087A19E9D8120039006B /* ToolbarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarViewController.swift; sourceTree = "<group>"; };
 		43CD6F4119E89227007F2295 /* Noface.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Noface.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43CD6F4519E89227007F2295 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 		43CD6F4319E89227007F2295 /* CAMonymous */ = {
 			isa = PBXGroup;
 			children = (
+				439AE4B919EA6504005409B6 /* Noface_presentation.pdf */,
 				43CD6F4619E89227007F2295 /* AppDelegate.swift */,
 				43CD6F4819E89227007F2295 /* ViewController.swift */,
 				439E087A19E9D8120039006B /* ToolbarViewController.swift */,
@@ -227,6 +230,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				439AE4BA19EA6504005409B6 /* Noface_presentation.pdf in Resources */,
 				43CD6F4C19E89227007F2295 /* Main.storyboard in Resources */,
 				43CD6F7619E89BA3007F2295 /* dessert.png in Resources */,
 				43CD6F5119E89227007F2295 /* LaunchScreen.xib in Resources */,
