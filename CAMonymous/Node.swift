@@ -63,17 +63,17 @@ class Node: NSObject {
   func render(commandQueue: MTLCommandQueue, pipelineState: MTLRenderPipelineState, drawable: CAMetalDrawable, parentModelViewMatrix: Matrix4, projectionMatrix: Matrix4, clearColor: MTLClearColor?){
     
     let renderPassDescriptor = MTLRenderPassDescriptor()
-    renderPassDescriptor.colorAttachments.objectAtIndexedSubscript(0).texture = drawable.texture
-    renderPassDescriptor.colorAttachments.objectAtIndexedSubscript(0).loadAction = .Clear
+    renderPassDescriptor.colorAttachments[0].texture = drawable.texture
+    renderPassDescriptor.colorAttachments[0].loadAction = .Clear
     
     if let clearColor = clearColor{
-      renderPassDescriptor.colorAttachments.objectAtIndexedSubscript(0).clearColor = clearColor
+      renderPassDescriptor.colorAttachments[0].clearColor = clearColor
     }
     else{
-      renderPassDescriptor.colorAttachments.objectAtIndexedSubscript(0).clearColor = MTLClearColor(red: 1.0, green: 1, blue: 1, alpha: 1.0)
+      renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColor(red: 1.0, green: 1, blue: 1, alpha: 1.0)
     }
     
-    renderPassDescriptor.colorAttachments.objectAtIndexedSubscript(0).storeAction = .Store
+    renderPassDescriptor.colorAttachments[0].storeAction = .Store
     
     let commandBuffer = commandQueue.commandBuffer()
     commandBuffer.addCompletedHandler({

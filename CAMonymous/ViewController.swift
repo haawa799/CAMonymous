@@ -58,7 +58,7 @@ class ViewController: UIViewController, CaptureManagerDelegate {
     let pipelineStateDescriptor = MTLRenderPipelineDescriptor()
     pipelineStateDescriptor.vertexFunction = vertexProgram
     pipelineStateDescriptor.fragmentFunction = fragmentProgram
-    pipelineStateDescriptor.colorAttachments.objectAtIndexedSubscript(0).pixelFormat = .BGRA8Unorm
+    pipelineStateDescriptor.colorAttachments[0].pixelFormat = .BGRA8Unorm
     
     
     var pipelineError : NSError?
