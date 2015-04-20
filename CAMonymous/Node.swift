@@ -116,8 +116,8 @@ class Node: NSObject {
     
     uniformsBuffer = device.newBufferWithLength(sizeof(Float)*16*2, options: nil)
     var bufferPointer = uniformsBuffer?.contents()
-    memcpy(bufferPointer!, nodeModelMatrix.raw(), UInt(sizeof(Float)*16))
-    memcpy(bufferPointer! + sizeof(Float)*16, projectionMatrix.raw(), UInt(sizeof(Float)*16))
+    memcpy(bufferPointer!, nodeModelMatrix.raw(), sizeof(Float)*16)
+    memcpy(bufferPointer! + sizeof(Float)*16, projectionMatrix.raw(), sizeof(Float)*16)
     renderEncoder.setVertexBuffer(self.uniformsBuffer, offset: 0, atIndex: 1)
     
     //Draw primitives

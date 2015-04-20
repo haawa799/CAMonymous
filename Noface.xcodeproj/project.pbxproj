@@ -14,7 +14,6 @@
 		43CD6F4C19E89227007F2295 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43CD6F4A19E89227007F2295 /* Main.storyboard */; };
 		43CD6F4E19E89227007F2295 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43CD6F4D19E89227007F2295 /* Images.xcassets */; };
 		43CD6F5119E89227007F2295 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43CD6F4F19E89227007F2295 /* LaunchScreen.xib */; };
-		43CD6F5D19E89227007F2295 /* CAMonymousTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CD6F5C19E89227007F2295 /* CAMonymousTests.swift */; };
 		43CD6F6919E89284007F2295 /* Matrix4.m in Sources */ = {isa = PBXBuildFile; fileRef = 43CD6F6819E89284007F2295 /* Matrix4.m */; };
 		43CD6F6B19E89409007F2295 /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CD6F6A19E89409007F2295 /* Vertex.swift */; };
 		43CD6F6D19E89434007F2295 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CD6F6C19E89434007F2295 /* Node.swift */; };
@@ -24,16 +23,6 @@
 		43CD6F7619E89BA3007F2295 /* dessert.png in Resources */ = {isa = PBXBuildFile; fileRef = 43CD6F7519E89BA3007F2295 /* dessert.png */; };
 		43CD6F7919E8A392007F2295 /* CaptureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 43CD6F7819E8A392007F2295 /* CaptureManager.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		43CD6F5719E89227007F2295 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 43CD6F3919E89227007F2295 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 43CD6F4019E89227007F2295;
-			remoteInfo = CAMonymous;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		439AE4B919EA6504005409B6 /* Noface_presentation.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Noface_presentation.pdf; sourceTree = "<group>"; };
@@ -45,7 +34,6 @@
 		43CD6F4B19E89227007F2295 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		43CD6F4D19E89227007F2295 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		43CD6F5019E89227007F2295 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		43CD6F5619E89227007F2295 /* NofaceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NofaceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		43CD6F5B19E89227007F2295 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43CD6F5C19E89227007F2295 /* CAMonymousTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAMonymousTests.swift; sourceTree = "<group>"; };
 		43CD6F6619E89284007F2295 /* CAMonymous-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CAMonymous-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -70,13 +58,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		43CD6F5319E89227007F2295 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -93,7 +74,6 @@
 			isa = PBXGroup;
 			children = (
 				43CD6F4119E89227007F2295 /* Noface.app */,
-				43CD6F5619E89227007F2295 /* NofaceTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -170,24 +150,6 @@
 			productReference = 43CD6F4119E89227007F2295 /* Noface.app */;
 			productType = "com.apple.product-type.application";
 		};
-		43CD6F5519E89227007F2295 /* NofaceTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 43CD6F6319E89227007F2295 /* Build configuration list for PBXNativeTarget "NofaceTests" */;
-			buildPhases = (
-				43CD6F5219E89227007F2295 /* Sources */,
-				43CD6F5319E89227007F2295 /* Frameworks */,
-				43CD6F5419E89227007F2295 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				43CD6F5819E89227007F2295 /* PBXTargetDependency */,
-			);
-			name = NofaceTests;
-			productName = CAMonymousTests;
-			productReference = 43CD6F5619E89227007F2295 /* NofaceTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -199,10 +161,6 @@
 				TargetAttributes = {
 					43CD6F4019E89227007F2295 = {
 						CreatedOnToolsVersion = 6.0;
-					};
-					43CD6F5519E89227007F2295 = {
-						CreatedOnToolsVersion = 6.0;
-						TestTargetID = 43CD6F4019E89227007F2295;
 					};
 				};
 			};
@@ -220,7 +178,6 @@
 			projectRoot = "";
 			targets = (
 				43CD6F4019E89227007F2295 /* Noface */,
-				43CD6F5519E89227007F2295 /* NofaceTests */,
 			);
 		};
 /* End PBXProject section */
@@ -235,13 +192,6 @@
 				43CD6F7619E89BA3007F2295 /* dessert.png in Resources */,
 				43CD6F5119E89227007F2295 /* LaunchScreen.xib in Resources */,
 				43CD6F4E19E89227007F2295 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		43CD6F5419E89227007F2295 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,23 +215,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		43CD6F5219E89227007F2295 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				43CD6F5D19E89227007F2295 /* CAMonymousTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		43CD6F5819E89227007F2295 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 43CD6F4019E89227007F2295 /* Noface */;
-			targetProxy = 43CD6F5719E89227007F2295 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		43CD6F4A19E89227007F2295 /* Main.storyboard */ = {
@@ -405,40 +339,6 @@
 			};
 			name = Release;
 		};
-		43CD6F6419E89227007F2295 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = CAMonymousTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = NofaceTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CAMonymous.app/CAMonymous";
-			};
-			name = Debug;
-		};
-		43CD6F6519E89227007F2295 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = CAMonymousTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = NofaceTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CAMonymous.app/CAMonymous";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -456,15 +356,6 @@
 			buildConfigurations = (
 				43CD6F6119E89227007F2295 /* Debug */,
 				43CD6F6219E89227007F2295 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		43CD6F6319E89227007F2295 /* Build configuration list for PBXNativeTarget "NofaceTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				43CD6F6419E89227007F2295 /* Debug */,
-				43CD6F6519E89227007F2295 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
