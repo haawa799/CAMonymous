@@ -112,7 +112,7 @@
     if (self.device != nil){
       
       
-      NSUInteger numberOfFaceObjects = 4;
+      NSUInteger numberOfFaceObjects = 10;
       NSUInteger numberOfComponents = 6;
       float buffer[numberOfComponents*numberOfFaceObjects];
       if (numberOfFaces < numberOfFaceObjects){
